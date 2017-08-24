@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="PU" transaction-type="JTA">
+    <!-- new line added-->
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <jta-data-source>java:app/Div</jta-data-source>
+    <class>com.mycompany.assignment2_final.Customer.Customer</class>
+    <class>com.mycompany.assignment2_final.Log.Log</class>
+    <class>com.mycompany.assignment2_final.Project.Project</class>
+    <class>com.mycompany.assignment2_final.Sync.Sync</class>
+    <class>com.mycompany.assignment2_final.Task.Task</class>
+    <class>com.mycompany.assignment2_final.TimeTracker.TimeTracker</class>
+    <class>com.mycompany.assignment2_final.NewUser.NewUser</class>    
+    <exclude-unlisted-classes>true</exclude-unlisted-classes>
+    <properties>
+      <!-- new line added-->
+      <property name="eclipselink.logging.level" value="INFO"/>
+      <!-- new line added-->
+      <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
+    </properties>
+  </persistence-unit>
+</persistence>

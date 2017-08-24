@@ -1,0 +1,89 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <title>User's Profile Page</title>
+     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+     <link rel = "stylesheet"   type = "text/css"    href = "style/stylesheet.css" /> 
+     
+<script type="text/javascript" src = "js/main.js"></script>
+
+</h:head>
+<script>
+    function stop2()
+    {
+    }
+</script>
+<h:body> 
+    <h1>BitPLex</h1>
+    <br></br>
+  <div class="clearfix">
+<ul>
+  <li><a href="userProfile.xhtml">Timer</a></li>
+  <li><a href="reports.xhtml">Reports</a></li>
+  <li><a href="projects.xhtml">Projects</a></li>
+  <li><a href="sync.xhtml">SYNC</a></li>
+  <li><a href="index.xhtml">LogOut</a></li>
+  <br></br>
+  <br></br>
+  <br></br>
+  <p> Welcome: #{customerController.customer.userName}</p>      
+</ul>
+
+<!--create task today-->   
+<div class="column content">
+    <h:form id="TaskDetails">
+        <h:panelGrid columns="5">
+            <h:inputText id="task_Name" value ="#{taskController.task.task_Name}"></h:inputText> 
+            <h:commandButton value="save task" action="#{taskController.doCreateNewTask()}"/>
+        </h:panelGrid>
+    </h:form>          
+</div>
+
+<div class="column content">
+    <h:form id="projectDetails">
+        <h:panelGrid columns="10">
+
+        <!--project selection for task-->    
+        <h:outputLabel value="Select Project"/>
+        <h:selectOneMenu value="#{projectController.projectId}">
+            <f:selectItems value="#{projectController.projectList}" var="project" itemLabel="#{project.project_Name}" itemValue="#{project.id}" />
+        </h:selectOneMenu>
+
+        <!--create a new project-->          
+        <span class="firstLabel">         </span>
+        <h:outputLabel value="Create a new project " class="firstLabel"/>
+        <h:inputText id="projectname" value="#{projectController.project.project_Name}"  required="true"> </h:inputText>     
+        <br></br>     
+        <h:commandButton value="Add project" action="#{projectController.AllProjects()}"/> 
+        </h:panelGrid>
+    </h:form>          
+</div>
+
+<!--timer display-->
+<div class="column content">
+    <h:form id="TimerDetails">
+        <h:panelGrid columns="5">
+            <h2><b><i><u><span id="hours">00</span></u></i></b>:
+            <b><i><u><span id="minutes">00</span></u></i></b>:
+            <b><i><u><span id="seconds">00</span></u></i></b></h2>	
+        </h:panelGrid>
+    </h:form>          
+</div>
+
+<br></br>
+
+    <!--start and stop timer-->
+    <div class="column content">
+        <span id="t">last job time was: 00:00:00</span>
+        <button value="start timer" onclick="start()">Start timer</button> 
+        <button value="stop timer" onclick="stop1()">Stop timer</button>    
+    </div>    
+</div>   
+    <i>Start Tracking with us</i>    
+</h:body>
+</html>
+
+

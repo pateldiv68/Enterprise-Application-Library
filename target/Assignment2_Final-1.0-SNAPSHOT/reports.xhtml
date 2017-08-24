@@ -1,0 +1,100 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <title>User's Projects Page</title>
+     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+     <link rel = "stylesheet"   type = "text/css"    href = "style/stylesheet.css" /> 
+     
+<script type="text/javascript" src = "style/myScript.js"></script>
+</h:head>
+<h:body>
+    <h1>BitPLex</h1>
+    <br></br>
+  <div class="clearfix">
+<ul>
+  <li><a href="userProfile.xhtml">Timer</a></li>
+  <li><a href="reports.xhtml">Reports</a></li>
+  <li><a href="projects.xhtml">Projects</a></li>
+  <li><a href="sync.xhtml">SYNC</a></li>
+  <li><a href="index.xhtml">LogOut</a></li>
+  <br></br>
+  <br></br>
+  <br></br>
+  <p> Welcome: #{customerController.customer.userName}</p>      
+</ul>
+      </div>
+    <div class="column content">
+    <h1>Reports</h1>
+    
+    <!--display tasks and projects created by user and show delete links for each of them-->
+    <h:panelGrid columns="10">
+    <h:dataTable value="#{taskController.taskList}" var="tn" border="1">
+        <h:column>
+            <f:facet name="header">
+                <h:outputText value="Task Name"/>
+            </f:facet>                        
+            <h:outputText value="#{tn.task_Name}"/>
+        </h:column>
+        <h:column>
+            <h:form>   
+            <f:facet name="header">
+            <h:outputText value="Action"/>
+            </f:facet>
+                <h:commandLink value="Delete" action="#{taskController.delete_task(tn)}" />
+            </h:form>  
+        </h:column>        
+    </h:dataTable>
+        
+    <h:dataTable value="#{projectController.projectList}" var="cl" border="1">
+        <h:column>
+            <f:facet name="header">
+                <h:outputText value="Project Name"/>
+            </f:facet>            
+            <h:outputText value="#{cl.project_Name}"/>
+        </h:column>
+        <h:column>
+            <h:form>   
+            <f:facet name="header">
+            <h:outputText value="Action"/>
+            </f:facet>
+                <h:commandLink value="Delete" action="#{projectController.delete(cl)}" />
+            </h:form>  
+        </h:column>                 
+    </h:dataTable>
+    </h:panelGrid>
+ 
+
+<br/><br/>    
+
+    <!--Show timetracker entries-->
+    <p>Separate entries for every tasks</p> 
+    <h:dataTable value="#{timeTrackerController.togglList}" var="tl" border="1">
+        <h:column>
+            <f:facet name="header">
+                <h:outputText value="Start Date"/>
+            </f:facet>                        
+            <h:outputText value="#{tl.TT_Sdate}"/>
+        </h:column>
+        
+        <h:column>
+            <f:facet name="header">
+                <h:outputText value="End Date"/>
+            </f:facet>            
+            <h:outputText value="#{tl.TT_Edate}"/>
+        </h:column>
+            
+        <h:column>
+            <f:facet name="header">
+                <h:outputText value="End Time"/>
+            </f:facet>            
+            <h:outputText value="#{tl.TT_ETime}"/>
+        </h:column>
+            
+    </h:dataTable> 
+    
+</div>
+</h:body>
+</html>

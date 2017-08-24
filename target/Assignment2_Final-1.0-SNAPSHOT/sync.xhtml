@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+    <title>Sync Page</title>
+     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+     <link rel = "stylesheet"   type = "text/css"    href = "style/stylesheet.css" />
+</h:head>
+<h:body>
+        <h1>BitPLex</h1>
+    <br></br>
+<section>
+<ul>
+  <li><a href="timer.xhtml">Timer</a></li>
+  <li><a href="reports.xhtml">Reports</a></li>
+  <li><a href="projects.xhtml">Projects</a></li>
+  <li><a href="sync.xhtml">SYNC</a></li>
+  <li><a href="index.xhtml">LogOut</a></li>
+  <br></br>
+  <br></br>
+  <br></br>
+  <p> Welcome: #{customerController.customer.userName}</p>      
+</ul>
+</section>	
+
+    <!--call jquery when sync button pressed by user-->    
+    <script>
+       function call()
+        {
+           window.location.href="index.jsp";
+        }
+    </script>    
+<div class="column content">
+    <h1>Sync</h1>
+    <input id="btn" type="button" onclick="call()" value="sync data from toggl" />
+    <input id="btn1" type="button" onclick="" value="upload data to toggl" />
+</div>
+</h:body>
+</html>

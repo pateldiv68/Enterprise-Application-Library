@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+    <title>Login Page</title>
+<script type="text/javascript" src = "js/main.js"></script>
+<link rel="stylesheet" href="style/stylesheet.css"></link>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</h:head>
+
+    <h:body>  
+    <h1>BitPLex</h1>
+    <br></br>
+    <h3>User Login</h3>    
+    <hr/>
+    <!--user login credentials--> 
+    <h:form id="UserDetails">
+        <h:panelGrid columns="2">
+            <h:outputLabel value="Username : "/>
+            <h:inputText id="username" value ="#{customerController.customer.userName}" required="true"> </h:inputText> 
+
+            <h:outputLabel value="Password :"/>
+            <h:inputText id="password" value="#{customerController.customer.password}" required="true"> </h:inputText>
+        </h:panelGrid>
+        <br></br>
+        <!--calling command action to controller to log user entry into the system, persist user into database--> 
+        <h:commandButton value="Login" action="#{customerController.doCreateUserEntry()}"/>
+        <br/>
+        <br/>
+        <h:commandButton value="New User" action="CreateCustomer.xhtml"/>                
+    </h:form>    
+    
+    <h:form>
+        <!--error message display for username and password-->        
+        <br/>
+        <h:message id="msgU" for="username"/>
+        <br/>
+        <h:message id="msgP" for="password"/>        
+    </h:form>
+    <br></br>
+        <table border="0">
+            <tr>
+                <td colspan="3">
+                    <h:messages showDetail="true" errorStyle="color: red" warnStyle="color: orange"
+                                infoStyle="color: blue" globalOnly="true"/>
+                </td>
+            </tr>
+        </table>     
+    <br></br>
+    <hr/>
+    <i>Start Tracking with us</i>
+</h:body>
+</html>
+
+

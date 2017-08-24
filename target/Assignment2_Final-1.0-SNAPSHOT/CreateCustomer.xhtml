@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+    <title>Create a new User</title>
+</h:head>
+<h:body>
+<h1>Create a new User</h1>
+<hr/>
+<!--new user credential form-->
+<h:form id="NewUserDetails">
+        <h:panelGrid columns="2">
+            <h:outputLabel value="Username : "/>
+            <h:inputText id="username" value ="#{newUserController.newUser.userName}" required="true"> </h:inputText> 
+
+            <h:outputLabel value="Toggl Token :"/>
+            <h:inputText id="token" value="#{newUserController.newUser.togglToken}" required="true"> </h:inputText>
+
+            <h:outputLabel value="Workspace ID : "/>
+            <h:inputText id="wid" value="#{newUserController.newUser.workSpaceId}" required="true"> </h:inputText>
+            
+            <h:outputLabel value="User Agent  : "/>
+            <h:inputTextarea id="agent" value="#{newUserController.newUser.userAgent}" required="true" cols="35"> </h:inputTextarea>
+        </h:panelGrid>
+            <h:commandButton value="Create a NewUser" action="#{newUserController.doCreateCustomerEntry()}"/>
+        <br></br>
+</h:form>
+    
+    <h:form>
+        <br/>
+        <br/>
+        <!--error message display if credentials not filled properly-->
+        <h:message id="msgtoken" for="token"/>
+        <br/>
+        <h:message id="msgwid" for="wid"/>
+        <br/>
+        <h:message id="msgagent" for="agent"/>        
+    </h:form>
+    
+        <table border="0">
+            <tr>
+                <td colspan="3">
+                    <h:messages showDetail="true" errorStyle="color: red" warnStyle="color: orange"
+                                infoStyle="color: blue" globalOnly="true"/>
+                </td>
+            </tr>
+        </table>     
+    <br></br>
+    <a href="index.xhtml">HOME </a>   
+    <hr/>
+    <i>Start Tracking with us</i>
+</h:body>
+</html>
